@@ -1,0 +1,125 @@
+@use "../tools" as *;
+
+.header {
+	padding-block: adapt(26, 12, $tablet);
+	position: fixed;
+	z-index: 55;
+	top: 0;
+	left: 0;
+	width: 100%;
+	border-bottom: 1px solid var(--color-accent);
+	color: var(--color-white);
+
+	.admin-bar & {
+		top: var(--wp-admin--admin-bar--height);
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		background: var(--color-dark-2);
+		opacity: 0.6;
+	}
+
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: adapt(90, 10, $tablet);
+	}
+
+	&__logo {
+	}
+
+	&__menu {
+	}
+
+	&__phone-btn {
+		margin-left: auto;
+	}
+
+	&__burger-btn {
+	}
+}
+
+.header-menu {
+	&__phone-box {
+	}
+}
+
+.header-phone-box {
+	flex-shrink: 0;
+
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 10px;
+	@include media($tablet) {
+		width: 100%;
+	}
+	&__phone {
+		color: inherit;
+		text-decoration: none;
+		display: inline-flex;
+		font-size: adapt(24, 18);
+		font-weight: 800;
+		line-height: var(--line-height);
+		--width: 16px;
+		gap: 10px;
+	}
+
+	&__btn {
+		color: inherit;
+		text-decoration: none;
+		display: inline-flex;
+		font-size: rem(14);
+		font-weight: 700;
+		@include gradient-text(var(--color-accent-gradient));
+		transition: all 0.3s;
+
+		@include hover {
+			opacity: 0.7;
+		}
+		@include media($tablet) {
+			@include reset;
+			text-decoration: none;
+			border: none;
+			background: transparent;
+			display: flex;
+
+			position: relative;
+			overflow: hidden;
+
+			border-radius: 50px;
+			padding: 16px;
+			background: var(--color-accent-gradient);
+			background-size: 200% 200%;
+			background-position: 0% 50%;
+
+			transition: background-position 0.4s ease;
+
+			font-weight: 500;
+			text-align: center;
+			color: var(--color-white);
+
+			//max-width: 230px;
+			max-width: 100%;
+			width: 100%;
+
+			justify-content: center;
+			align-items: center;
+
+			background-clip: initial;
+			-webkit-background-clip: initial;
+			-webkit-text-fill-color: initial;
+			@include hover {
+				background-position: 100% 50%;
+			}
+		}
+	}
+}

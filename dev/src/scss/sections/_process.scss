@@ -1,0 +1,169 @@
+@use "../tools" as *;
+@use "../components/typography" as *;
+
+.process {
+	background-position: top center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding-block: adapt(90, 56);
+	position: relative;
+	@include overlay(var(--color-white-gradient), 1);
+	overflow: hidden;
+	
+	&__container {
+		position: relative;
+		z-index: 2;
+	}
+
+	&__title {
+		text-align: center;
+
+		&:not(:last-child) {
+			margin-bottom: adapt(44, 24);
+		}
+	}
+
+	&__list {
+		--min: 230px;
+		gap: adapt(24, 12);
+		@include counter(true, ".process-item");
+		@include media($tablet) {
+			--min: 320px;
+		}
+	}
+
+	&__item {
+		&:first-child {
+			.process-item__wrapper::before {
+				display: none;
+			}
+		}
+		&:last-child {
+			.process-item__wrapper::after {
+				display: none;
+			}
+		}
+	}
+}
+
+.process-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	text-align: center;
+	position: relative;
+
+	&::before {
+		background: var(--color-accent-gradient);
+		border-radius: 50%;
+		@include square(68px);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		color: var(--color-white);
+
+		@extend .title-2;
+		@include media($mobile-sm) {
+			font-size: 20px;
+		}
+		@include media($mobile) {
+			display: none;
+		}
+	}
+	&::after {
+		content: "";
+		position: absolute;
+		@include square(80px);
+		border: 1px solid var(--color-accent);
+		transform: translateY(-8%) translateX(-50%);
+		left: 50%;
+		border-radius: 50%;
+		@include media($mobile) {
+			display: none;
+		}
+	}
+
+	&__wrapper {
+		position: relative;
+		padding: adapt(20, 12) adapt(10, 12);
+		background: var(--color-white);
+		border: 1px solid var(--color-accent);
+		border-radius: 12px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		flex-grow: 1;
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			top: -20%;
+			left: calc(adapt(12, 6) * -1);
+			width: 32%;
+			border: 1px dashed var(--color-accent);
+
+			@include media($mobile) {
+				display: none;
+			}
+		}
+		&::after {
+			right: calc(adapt(12, 6) * -1);
+			left: unset;
+		}
+	}
+	&__header {
+		@include media($mobile) {
+			display: flex;
+			gap: 13px;
+			align-items: center;
+			justify-content: center;
+			align-self: center;
+			max-width: adapt(300, 280, $finishBreakpoint, $mobile);
+		}
+	}
+	&__counter {
+		flex-shrink: 0;
+		background: var(--color-accent-gradient);
+		border-radius: 50%;
+		@include square(adapt(68, 42));
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		color: var(--color-white);
+		position: relative;
+
+		@extend .title-2;
+		@include media($mobile) {
+			font-size: 20px;
+		}
+		@include media($mobile, min) {
+			display: none;
+		}
+		&::after {
+			content: "";
+			position: absolute;
+			@include square(adapt(80, 48));
+			border: 1px solid var(--color-accent);
+			transform: translateY(-50%) translateX(-50%);
+			left: 50%;
+			top: 50%;
+			border-radius: 50%;
+		}
+	}
+	&__title {
+		max-width: 210px;
+		margin: 0 auto;
+		@include media($mobile) {
+			text-align: left;
+		}
+		@include media($mobile, min) {
+		}
+	}
+
+	&__descr {
+	}
+}

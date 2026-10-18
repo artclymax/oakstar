@@ -1,0 +1,24 @@
+@use "../tools" as *;
+
+.hero-page {
+	&::before {
+		content: "";
+		height: var(--header-height);
+		display: flex;
+		background: var(--color-dark-3);
+	}
+
+	&__container {
+		padding-block: 20px adapt(44, 24);
+	}
+
+	&__breadcrumbs {
+		&:not(:last-child) {
+			margin-bottom: adapt(44, 32);
+		}
+	}
+
+	&__title {
+		text-align: center;
+	}
+}

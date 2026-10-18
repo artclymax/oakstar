@@ -1,0 +1,77 @@
+@use "../tools" as *;
+
+.hero {
+	padding-top: calc(var(--header-height) + 56px);
+	padding-bottom: adapt(80, 56);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: var(--color-white);
+	position: relative;
+	overflow: hidden;
+	@include overlay(var(--color-black), 0.6);
+
+	&__container {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: adapt(40, 24);
+		min-height: 50dvh;
+		@include media($mobile) {
+			flex-wrap: wrap;
+		}
+	}
+
+	&__content {
+		flex: 0 1 adapt(665, 400, $tablet);
+		display: grid;
+		gap: adapt(40, 16);
+		@include media($mobile) {
+			flex: 1 1 100%;
+		}
+	}
+
+	&__title {
+	}
+
+	&__descr {
+		font-size: adapt(18, 16);
+		font-weight: 500;
+	}
+
+	&__form {
+		flex: 0 1 384px;
+		@include media($mobile) {
+			flex: 1 1 100%;
+		}
+	}
+}
+
+.hero-form {
+	color: var(--color-dark);
+	background: var(--color-white-08);
+	backdrop-filter: blur(4px);
+	padding: adapt(39, 12) adapt(24, 12);
+	border-radius: 12px;
+
+	&__title {
+		text-align: center;
+		text-wrap: balance;
+		&:not(:last-child) {
+			margin-bottom: 12px;
+		}
+	}
+
+	&__descr {
+		text-align: center;
+		font-size: adapt(18, 16);
+		&:not(:last-child) {
+			margin-bottom: 32px;
+		}
+	}
+
+	&__form {
+	}
+}

@@ -1,0 +1,78 @@
+@use "../tools" as *;
+
+.footer {
+	background: var(--color-dark-3);
+	padding-block: 56px adapt(56, 70);
+	color: var(--color-light-2);
+	font-size: rem(14);
+
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		@include media($mobile) {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+
+	&__info {
+		flex-shrink: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+	&__logo {
+	}
+	&__unp {
+		@include reset;
+	}
+
+	&__menu {
+	}
+
+	&__links {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 16px;
+		text-align: right;
+
+		@include media($mobile) {
+			align-items: flex-start;
+			text-align: left;
+		}
+	}
+
+	&__link {
+		color: inherit;
+		transition: all 0.3s;
+
+		@include hover {
+			color: var(--color-accent);
+		}
+	}
+}
+.footer-menu {
+	&__list {
+		@include reset;
+		list-style-type: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: adapt(58, 20);
+		font-weight: 500;
+		font-size: 1rem;
+		color: var(--color-white);
+	
+		@include media($mobile-sm) {
+			flex-direction: column;
+		}
+		
+		a {
+			text-decoration: none;
+			color: inherit;
+			@include hoverLine(center, var(--color-accent), 2px);
+		}
+	}
+}

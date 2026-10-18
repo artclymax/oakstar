@@ -1,0 +1,81 @@
+@use "../tools" as *;
+
+.faq {
+	padding-block: adapt(90, 56);
+	position: relative;
+	overflow: hidden;
+	@include overlay(var(--color-white-gradient), 1);
+
+	&__container {
+		position: relative;
+		z-index: 2;
+	}
+
+	&__title {
+		text-align: center;
+
+		&:not(:last-child) {
+			margin-bottom: adapt(44, 24);
+		}
+	}
+
+	&__list {
+		@include reset;
+		list-style-type: none;
+		display: grid;
+		gap: adapt(16, 12);
+		max-width: 795px;
+		margin: 0 auto;
+	}
+
+	&__item {
+	}
+}
+
+.spoiler-active {
+}
+
+.faq-item {
+	border-radius: 12px;
+	overflow: hidden;
+	background: var(--color-white);
+	box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+	&__btn {
+		border: none;
+		background: var(--color-0);
+		padding: adapt(20, 12) adapt(20, 10);
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		text-align: left;
+	}
+
+	&__title {
+		@include reset;
+		font-weight: 800;
+		font-size: rem(18);
+	}
+
+	&__icon {
+		@include square(24px);
+		transition: all 0.3s;
+		flex-shrink: 0;
+		.spoiler-active & {
+			transform: rotate(180deg);
+		}
+	}
+
+	&__content {
+		background: var(--color-white);
+	}
+
+	&__descr {
+		padding: adapt(20, 12) adapt(20, 10);
+		padding-top: unset;
+		max-width: 700px;
+		font-weight: 300;
+		font-size: rem(18);
+	}
+}

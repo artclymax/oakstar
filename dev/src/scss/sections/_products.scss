@@ -1,0 +1,102 @@
+@use "../tools" as *;
+
+.products {
+	&__container {
+	}
+
+	&__title {
+		text-align: center;
+
+		&:not(:last-child) {
+			margin-bottom: adapt(44, 24);
+		}
+	}
+
+	&__list {
+		gap: adapt(24, 12);
+	}
+
+	&__item {
+	}
+}
+
+.products-item {
+	position: relative;
+	box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+	background: var(--color-white);
+	overflow: hidden;
+	border-radius: 20px;
+	cursor: pointer;
+
+	@include hover {
+		.products-item__image img {
+			transform: scale(1.08) translateY(-4px);
+		}
+	}
+
+	&__front {
+	}
+
+	&__image {
+		height: adapt(280, 260);
+		overflow: hidden;
+		img {
+			transition: transform 0.5s ease;
+		}
+	}
+
+	&__content {
+		padding: adapt(20, 12);
+	}
+
+	&__title {
+		text-align: center;
+		&:not(:last-child) {
+			margin-bottom: adapt(20, 12);
+		}
+	}
+
+	&__btn {
+		flex-shrink: 0;
+	}
+
+	&__back {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: adapt(20, 12);
+		background: var(--color-white);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		//display: none;
+		gap: adapt(20, 12);
+		transform: translateY(100%);
+		transition: transform 0.3s;
+		.active-item & {
+			transform: translateY(0);
+		}
+	}
+
+	&__wrapper {
+		position: relative;
+
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			height: 20px;
+			width: 100%;
+			pointer-events: none;
+			background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+		}
+	}
+	&__descr {
+		height: adapt(290, 270);
+		padding-bottom: 10px;
+		overflow-y: auto;
+	}
+}
